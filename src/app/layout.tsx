@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   title: "Red Fox · Humor. Nostalgia. Good vibes only.",
   description:
     "We create humorous, thoughtful content while building a community around it. We sell nostalgia through the things we make.",
+  icons: {
+    icon: "/redfoxlogo.png",
+    shortcut: "/redfoxlogo.png",
+    apple: "/redfoxlogo.png",
+  },
 };
 
 export default function RootLayout({
