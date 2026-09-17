@@ -167,9 +167,19 @@ export default function Footer() {
         </motion.div>
 
         {/* Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-50 pt-8 border-t border-white/5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-60 pt-8 border-t border-white/5 font-medium">
           <p>© 2026 Red Fox. All rights reserved.</p>
-          <p>SINGLE-PAGE SITE WITH ANCHOR NAVIGATION</p>
+          <p>
+            Built by{" "}
+            <a
+              href="https://khrien.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-bold hover:text-[#F16529] transition-colors"
+            >
+              Khrien
+            </a>
+          </p>
         </div>
       </div>
     </footer>
