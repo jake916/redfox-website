@@ -29,7 +29,7 @@ export default function Footer() {
     <footer className="bg-[#060E27] text-white pt-20 pb-12 px-4 md:px-8 border-t border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Top 4 Navigation Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {navCards.map((card, idx) =>
             card.external ? (
               <motion.a
@@ -78,7 +78,7 @@ export default function Footer() {
               </motion.div>
             )
           )}
-        </div>
+        </div> */}
 
         {/* Newsletter & Brand Info Grid */}
         <motion.div
