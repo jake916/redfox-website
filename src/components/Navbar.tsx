@@ -3,11 +3,16 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isStory = pathname === "/story";
+  const isEntertainment = pathname === "/entertainment";
+  const isContact = pathname === "/contact";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,8 +33,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Left: Brand Logo (Fox Mascot + Graffiti RDFOX) */}
         <Link
-          href="#top"
+          href="/"
           className="flex items-center group transition-transform duration-200 hover:scale-[1.02]"
+          aria-label="Red Fox Home"
         >
           <div className="relative h-12 sm:h-14 md:h-16 w-44 sm:w-52 md:w-60">
             <Image
@@ -46,8 +52,8 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8 lg:gap-12">
           {/* 1. THE STORY */}
           <Link
-            href="#about"
-            className="group relative flex items-center transition-transform duration-200 hover:scale-110 active:scale-95"
+            href="/story"
+            className="group relative flex flex-col items-center transition-transform duration-200 hover:scale-110 active:scale-95"
             aria-label="The Story"
           >
             <div className="relative h-7 lg:h-8 w-20 lg:w-24">
@@ -55,15 +61,21 @@ export default function Navbar() {
                 src="/images/nav/nav_story.png"
                 alt="The Story"
                 fill
-                className="object-contain transition-opacity group-hover:opacity-80"
+                className={`object-contain transition-opacity ${
+                  isStory ? "opacity-100 drop-shadow-[0_2px_4px_rgba(92,20,20,0.3)]" : "opacity-85 group-hover:opacity-100"
+                }`}
               />
             </div>
+            {/* Storyboard Red Underline Indicator for Active Page */}
+            {isStory && (
+              <span className="w-16 h-[3px] bg-[#5C1414] rounded-full mt-1 animate-pulse" />
+            )}
           </Link>
 
           {/* 2. ENTERTAINMENT */}
           <Link
-            href="#showreel"
-            className="group relative flex items-center transition-transform duration-200 hover:scale-110 active:scale-95"
+            href="/entertainment"
+            className="group relative flex flex-col items-center transition-transform duration-200 hover:scale-110 active:scale-95"
             aria-label="Entertainment"
           >
             <div className="relative h-8 lg:h-10 w-24 lg:w-28">
@@ -71,9 +83,14 @@ export default function Navbar() {
                 src="/images/nav/nav_entertainment.png"
                 alt="Entertainment"
                 fill
-                className="object-contain transition-opacity group-hover:opacity-80"
+                className={`object-contain transition-opacity ${
+                  isEntertainment ? "opacity-100 drop-shadow-[0_2px_4px_rgba(92,20,20,0.3)]" : "opacity-85 group-hover:opacity-100"
+                }`}
               />
             </div>
+            {isEntertainment && (
+              <span className="w-20 h-[3px] bg-[#5C1414] rounded-full mt-1 animate-pulse" />
+            )}
           </Link>
 
           {/* 3. STYLES */}
@@ -96,8 +113,8 @@ export default function Navbar() {
 
           {/* 4. CONTACT US! */}
           <Link
-            href="#contact"
-            className="group relative flex items-center transition-transform duration-200 hover:scale-110 active:scale-95"
+            href="/contact"
+            className="group relative flex flex-col items-center transition-transform duration-200 hover:scale-110 active:scale-95"
             aria-label="Contact Us!"
           >
             <div className="relative h-8 lg:h-10 w-16 lg:w-20">
@@ -105,9 +122,14 @@ export default function Navbar() {
                 src="/images/nav/nav_contact.png"
                 alt="Contact Us!"
                 fill
-                className="object-contain transition-opacity group-hover:opacity-80"
+                className={`object-contain transition-opacity ${
+                  isContact ? "opacity-100 drop-shadow-[0_2px_4px_rgba(92,20,20,0.3)]" : "opacity-85 group-hover:opacity-100"
+                }`}
               />
             </div>
+            {isContact && (
+              <span className="w-16 h-[3px] bg-[#5C1414] rounded-full mt-1 animate-pulse" />
+            )}
           </Link>
         </nav>
 
@@ -126,9 +148,9 @@ export default function Navbar() {
         <div className="md:hidden bg-white/98 backdrop-blur-lg border-b border-[#5C1414]/15 px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col items-center gap-6">
             <Link
-              href="#about"
+              href="/story"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:scale-105 transition-transform"
+              className="py-2 hover:scale-105 transition-transform flex flex-col items-center"
             >
               <div className="relative h-8 w-28">
                 <Image
@@ -138,12 +160,15 @@ export default function Navbar() {
                   className="object-contain"
                 />
               </div>
+              {isStory && (
+                <span className="w-16 h-[3px] bg-[#5C1414] rounded-full mt-1" />
+              )}
             </Link>
 
             <Link
-              href="#showreel"
+              href="/entertainment"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:scale-105 transition-transform"
+              className="py-2 hover:scale-105 transition-transform flex flex-col items-center"
             >
               <div className="relative h-10 w-32">
                 <Image
@@ -153,6 +178,9 @@ export default function Navbar() {
                   className="object-contain"
                 />
               </div>
+              {isEntertainment && (
+                <span className="w-20 h-[3px] bg-[#5C1414] rounded-full mt-1" />
+              )}
             </Link>
 
             <a
@@ -173,9 +201,9 @@ export default function Navbar() {
             </a>
 
             <Link
-              href="#contact"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:scale-105 transition-transform"
+              className="py-2 hover:scale-105 transition-transform flex flex-col items-center"
             >
               <div className="relative h-10 w-24">
                 <Image
@@ -185,6 +213,9 @@ export default function Navbar() {
                   className="object-contain"
                 />
               </div>
+              {isContact && (
+                <span className="w-16 h-[3px] bg-[#5C1414] rounded-full mt-1" />
+              )}
             </Link>
           </div>
         </div>
