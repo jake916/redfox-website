@@ -140,7 +140,7 @@ export default function ContactContent() {
             {/* Mascot Sketch & Witty Bubble */}
             <div className="relative w-full max-w-sm mx-auto lg:mx-0 bg-white rounded-3xl p-6 sm:p-8 border border-[#5C1414]/15 shadow-sm overflow-hidden flex flex-col items-center text-center">
               {/* Authentic Storyboard Marker Badge in corner */}
-              <div className="absolute -top-3 -right-3 w-24 h-24 pointer-events-none rotate-12 opacity-85">
+              {/* <div className="absolute -top-3 -right-3 w-24 h-24 pointer-events-none rotate-12 opacity-85">
                 <Image
                   src="/images/contact/badge_contact_note.png"
                   alt="Contact note sticker"
@@ -148,7 +148,7 @@ export default function ContactContent() {
                   sizes="100px"
                   className="object-contain"
                 />
-              </div>
+              </div> */}
 
               {/* The Standing Fox Mascot (extracted from Storyboard Page 11) */}
               <div className="relative w-48 sm:w-56 h-64 sm:h-72 my-2">
